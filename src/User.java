@@ -13,10 +13,10 @@ public class User {
         return login;
     }
 
-    public void setLogin(String login) {
+    public void setLogin(String login) throws WrongLoginException {
         if (login.length() >= 20) {
-            return ;
-        }
+            throw new WrongLoginException ();
+        } else
         this.login = login;
     }
 
