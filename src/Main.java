@@ -17,10 +17,10 @@ public class Main {
 
     private static void check(String login, String password, String confirmPassword) {
         if (login.length() >= 20 || !login.matches("[a-zA-Z0-9_]+")) {
-            throw new WrongLoginException("Логин слишком длинный или содержит запрещенные символы");
+            throw new WrongLoginException();
         }
         if (password.length() > 20 || !password.equals(confirmPassword) || !password.matches("[a-zA-z0-9_]+"))
-            throw new WrongPasswordException("Не корректный пароль");
+            throw new WrongPasswordException();
     }
 }
 
