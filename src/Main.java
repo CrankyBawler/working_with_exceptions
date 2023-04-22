@@ -1,20 +1,30 @@
+import WrongPasswordException.WrongPasswordException;
+
 public class Main {
+
     public static void main(String[] args) {
+        try {
+            check("java_skypro_go", "D_1hWiKjjP_9", "D_1hWiKjjP_9");
+            System.out.println("Вход выполнен успешно");
+        } catch (WrongPasswordException e){
+            e.printStackTrace();
+        } catch (WrongLoginException e){
+            e.printStackTrace();
+        }
+        finally {
+            System.out.println("Добрый день!");
+        }
     }
-    public static String authorization (String login, String password, String confirmPassword ) {
-            if (login.length() >= 20) {
-                throw new WrongLoginException
 
-            }
-
-
-          //  if (Pattern.matches("^[a-zA-Z_0-9]", test))
-        //if (!file.exists()) {
-         //   throw new FileNotFoundException();
+    private static void check (String login, String password, String confirmPassword){
+        if (login.length()>=20 || !login.matches("[a-zA-Z0-9_]+")){
+            throw new WrongLoginException("Логин слишком длинный или содержит запрещенные символы");
         }
-       // if (file.isDirectory()) {
-         //   throw new IllegalArgumentException(file.getPath() + " is a directory");
-        }
+        if (password.length() > 20 || !password.equals(confirmPassword) || !password.matches("[a-zA-z0-9_]+"))
+            throw new WrongPasswordException("Не корректный пароль");
+    }
+           }
+
 
 
 
